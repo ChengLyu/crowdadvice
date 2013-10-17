@@ -53,6 +53,11 @@ USE_L10N = True
 # If you set this to False, Django will not use timezone-aware datetimes.
 USE_TZ = True
 
+# URL for login required redirect
+LOGIN_URL = 'adviceapp:login'
+# URL for default successful login redirect
+LOGIN_REDIRECT_URL = 'adviceapp:feed'
+
 # Absolute filesystem path to the directory that will hold user-uploaded files.
 # Example: "/var/www/example.com/media/"
 MEDIA_ROOT = ''
@@ -125,7 +130,8 @@ INSTALLED_APPS = (
     'django.contrib.sites',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'django.contrib.admin'
+    'django.contrib.admin',
+    'adviceapp'
 )
 
 SESSION_SERIALIZER = 'django.contrib.sessions.serializers.JSONSerializer'
