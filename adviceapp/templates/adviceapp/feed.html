@@ -4,4 +4,6 @@
 
 <h1>Hello {{ user.first_name }}</h1>
 
+<p>Your birthday is {{ profile.birthday|date:"SHORT_DATE_FORMAT" }}</p>
+
 {% endblock %}
