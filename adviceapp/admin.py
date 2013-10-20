@@ -13,5 +13,6 @@ class UserAdmin(UserAdmin):
 admin.site.unregister(User)
 admin.site.register(User, UserAdmin)
 
+admin.site.register
 admin.site.register(Education)
 admin.site.register(MenteeProfile)

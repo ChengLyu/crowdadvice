@@ -28,7 +28,7 @@ class UserProfile(models.Model):
     
     GENDER_CHOICES = (
         ('M', 'Male'),
-        ('F', 'Female'),
+        ('F', 'Female')
     )
     gender = models.CharField(max_length=1, choices=GENDER_CHOICES, blank=True)
     
@@ -176,3 +176,25 @@ class AdviceStats(models.Model):
     
     count = models.PositiveIntegerField()
     
+
+class MentoringLink(models.Model):
+    """Tracking mentoring relationship and status of invites
+    """
+    
+    mentee = models.ForeignKey(User)
+    
+    mentor = models.ForeignKey(User)
+    
+    STATUS_CHOICES = (
+        ('R', 'Recommended'),
+        ('I', 'Invited'),
+        ('J', 'Rejected'),
+        ('A', 'Accepted')
+    )
+    status = models.CharField(max_length=1,
+                              choices=STATUS_CHOICES,
+                              default='R')
+    
+    last_status_change = models.DateTimeField()
+    
+    matching_score = models.FloatField()
