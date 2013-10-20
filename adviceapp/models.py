@@ -16,6 +16,20 @@ class Category(models.Model):
         return self.main + '->' + self.sub
 
 
+class CategoryCorrelation(models.Model):
+    """How close the two categories relates to each other
+    """
+
+    category1 = models.ForeignKey(Category, related_name='+')
+    
+    category2 = models.ForeignKey(Category, related_name='+')
+    
+    score = models.PositiveIntegerField(default = 0)
+    
+    def __unicode__(self):
+        return self.id
+    
+
 class Tag(models.Model):
     """Customizable tags for searching
     """
@@ -24,6 +38,7 @@ class Tag(models.Model):
 
     def __unicode__(self):
         return self.name
+
 
 class UserProfile(models.Model):
     """Basic information for each user

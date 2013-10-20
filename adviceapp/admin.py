@@ -4,7 +4,7 @@ from django.contrib.auth.admin import UserAdmin
 from adviceapp.models import UserProfile, Education, MenteeProfile, Category,\
                              MenteeProfile, MentorProfile, WorkExperience,\
                              Skill, CareerGoal, AdviceType, AdviceStats,\
-                             MentoringLink, Tag
+                             MentoringLink, Tag, CategoryCorrelation
 
 class UserProfileInline(admin.StackedInline):
     model = UserProfile
@@ -52,11 +52,17 @@ class MentorProfileAdmin(admin.ModelAdmin):
 class MentoringLinkAdmin(admin.ModelAdmin):
     list_display = ('id', 'mentee', 'mentor', 'status', 'matching_score')
     
+    
+class CategoryCorrelationAdmin(admin.ModelAdmin):
+    list_display = ('id', 'category1', 'category2', 'score')
+    
+    
 # Re-register UserAdmin
 admin.site.unregister(User)
 admin.site.register(User, UserAdmin)
 
 admin.site.register(Category)
+admin.site.register(CategoryCorrelation, CategoryCorrelationAdmin)
 admin.site.register(Tag)
 admin.site.register(AdviceType)
 
