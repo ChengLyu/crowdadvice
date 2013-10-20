@@ -143,7 +143,7 @@ SESSION_SERIALIZER = 'django.contrib.sessions.serializers.JSONSerializer'
 # more details on how to customize your logging configuration.
 LOGGING = {
     'version': 1,
-    'disable_existing_loggers': False,
+    'disable_existing_loggers': True,
     'filters': {
         'require_debug_false': {
             '()': 'django.utils.log.RequireDebugFalse'
@@ -154,6 +154,10 @@ LOGGING = {
             'level': 'ERROR',
             'filters': ['require_debug_false'],
             'class': 'django.utils.log.AdminEmailHandler'
+        },
+        'console':{
+            'level': 'DEBUG',
+            'class': 'logging.StreamHandler',
         }
     },
     'loggers': {
@@ -162,5 +166,9 @@ LOGGING = {
             'level': 'ERROR',
             'propagate': True,
         },
+        'adviceapp': {
+            'handlers': ['console'],
+            'level': 'DEBUG'
+        }
     }
 }

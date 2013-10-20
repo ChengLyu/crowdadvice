@@ -1,11 +1,15 @@
 from django.shortcuts import render
 from django.contrib.auth.decorators import login_required
 
+import logging
+
 from adviceapp.models import AdviceType
 
+logger = logging.getLogger(__name__)
+
 @login_required
-def handle(request):
-    """Render feed page
+def plan(request):
+    """Render mentee plan page
     """
     
     context = {}
@@ -16,11 +20,13 @@ def handle(request):
     context['profile'] = request.user.userprofile
     context['advice_types'] = AdviceType.objects.all()
     
-    mentorLinks = user.mentoringlinkmentee_set.all()
+    logger.debug(user.username)
+    
+    mentorLinks = user.mentoringlinkmentor_set.all()
     
     for ml in mentorLinks:
-        print ml.status
-        print ml.mentor.first_name
+        logger.debug(ml.status)
+        logger.debug(ml.mentor.username)
 
     
     return render(request, 'adviceapp/feed.html', context)

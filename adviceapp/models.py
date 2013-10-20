@@ -204,9 +204,9 @@ class MentoringLink(models.Model):
     """Tracking mentoring relationship and status of invites
     """
     
-    mentee = models.ForeignKey(User, related_name='mentoringlinkmentee')
+    mentee = models.ForeignKey(User, related_name='mentoringlinkmentee_set')
     
-    mentor = models.ForeignKey(User, related_name='mentoringlinkmentor')
+    mentor = models.ForeignKey(User, related_name='mentoringlinkmentor_set')
     
     STATUS_CHOICES = (
         ('R', 'Recommended'),
