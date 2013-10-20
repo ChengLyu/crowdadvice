@@ -56,9 +56,6 @@ class BaseProfile(models.Model):
     """
     
     user = models.OneToOneField(User, unique=True)
-    
-    class Meta:
-        abstract = True
 
 
 class MenteeProfile(BaseProfile):
@@ -181,9 +178,9 @@ class MentoringLink(models.Model):
     """Tracking mentoring relationship and status of invites
     """
     
-    mentee = models.ForeignKey(User)
+    mentee = models.ForeignKey(User, related_name='mentoringlink_mentee')
     
-    mentor = models.ForeignKey(User)
+    mentor = models.ForeignKey(User, related_name='mentoringlink_mentor')
     
     STATUS_CHOICES = (
         ('R', 'Recommended'),
