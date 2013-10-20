@@ -224,5 +224,15 @@ class MentoringLink(models.Model):
     
     matching_score = models.FloatField(default=0)
     
+    def getMentorInfo(self):
+        """Get a dict with associated mentor and other related info
+        """
+        
+        return {
+            'user': self.mentor,
+            'status': self.status,
+            'advice_types': self.advice_types
+        }
+    
     def __unicode__(self):
         return str(self.id)
