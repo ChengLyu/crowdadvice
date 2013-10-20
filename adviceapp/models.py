@@ -12,6 +12,9 @@ class Category(models.Model):
     
     sub = models.CharField(max_length=50)
 
+    def __unicode__(self):
+        return self.main + '->' + self.sub
+
 
 class Tag(models.Model):
     """Customizable tags for searching
@@ -19,6 +22,8 @@ class Tag(models.Model):
     
     name = models.CharField(max_length=50)
 
+    def __unicode__(self):
+        return self.name
 
 class UserProfile(models.Model):
     """Basic information for each user
@@ -32,7 +37,7 @@ class UserProfile(models.Model):
     )
     gender = models.CharField(max_length=1, choices=GENDER_CHOICES, blank=True)
     
-    current_location = models.CharField(max_length=100)
+    current_location = models.CharField(max_length=100, blank=True)
     
     birthday = models.DateField(blank=True, null=True)
     
@@ -56,6 +61,9 @@ class BaseProfile(models.Model):
     """
     
     user = models.OneToOneField(User, unique=True)
+    
+    def __unicode__(self):
+        return str(self.user.id)
 
 
 class MenteeProfile(BaseProfile):
@@ -94,6 +102,9 @@ class Education(models.Model):
     major = models.CharField(max_length=100)
     
     year = models.IntegerField(choices=_class_year(50))
+    
+    def __unicode__(self):
+        return str(self.id)
 
 
 class WorkExperience(models.Model):
@@ -106,9 +117,9 @@ class WorkExperience(models.Model):
     
     position = models.CharField(max_length=100)
     
-    location = models.CharField(max_length=100)
+    location = models.CharField(max_length=100, blank=True)
     
-    description = models.CharField(max_length=1000)
+    description = models.CharField(max_length=1000, blank=True)
     
     start = models.DateField()
     
@@ -116,7 +127,10 @@ class WorkExperience(models.Model):
     
     category = models.ForeignKey(Category)
     
-    tags = models.ManyToManyField(Tag)
+    tags = models.ManyToManyField(Tag, blank=True)
+    
+    def __unicode__(self):
+        return str(self.id)
 
 
 class Skill(models.Model):
@@ -129,7 +143,10 @@ class Skill(models.Model):
     
     category = models.ForeignKey(Category)
     
-    tags = models.ManyToManyField(Tag)
+    tags = models.ManyToManyField(Tag, blank=True)
+    
+    def __unicode__(self):
+        return str(self.id)
     
     
 class CareerGoal(models.Model):
@@ -138,27 +155,33 @@ class CareerGoal(models.Model):
     
     profile = models.ForeignKey(MenteeProfile)
     
-    company = models.CharField(max_length=100)
+    company = models.CharField(max_length=100, blank=True)
     
-    position = models.CharField(max_length=100)
+    position = models.CharField(max_length=100, blank=True)
     
-    location = models.CharField(max_length=100)
+    location = models.CharField(max_length=100, blank=True)
     
     # Expected age for reaching this goal
-    age = models.PositiveIntegerField()
+    age = models.PositiveIntegerField(default=0, blank=True)
     
-    description = models.CharField(max_length=1000)
+    description = models.CharField(max_length=1000, blank=True)
     
     category = models.ForeignKey(Category)
     
-    tags = models.ManyToManyField(Tag)
+    tags = models.ManyToManyField(Tag, blank=True)
+    
+    def __unicode__(self):
+        return str(self.id)
     
 
 class AdviceType(models.Model):
     """Type of advice
     """
     
-    name = models.CharField(max_length=100) 
+    name = models.CharField(max_length=100)
+    
+    def __unicode__(self):
+        return self.name
 
     
 class AdviceStats(models.Model):
@@ -171,16 +194,19 @@ class AdviceStats(models.Model):
     
     category = models.ForeignKey(Category)
     
-    count = models.PositiveIntegerField()
+    count = models.PositiveIntegerField(default=0)
+    
+    def __unicode__(self):
+        return str(self.id)
     
 
 class MentoringLink(models.Model):
     """Tracking mentoring relationship and status of invites
     """
     
-    mentee = models.ForeignKey(User, related_name='mentoringlink_mentee')
+    mentee = models.ForeignKey(User, related_name='mentoringlinkmentee')
     
-    mentor = models.ForeignKey(User, related_name='mentoringlink_mentor')
+    mentor = models.ForeignKey(User, related_name='mentoringlinkmentor')
     
     STATUS_CHOICES = (
         ('R', 'Recommended'),
@@ -194,4 +220,9 @@ class MentoringLink(models.Model):
     
     last_status_change = models.DateTimeField()
     
-    matching_score = models.FloatField()
+    advice_types = models.ManyToManyField(AdviceType)
+    
+    matching_score = models.FloatField(default=0)
+    
+    def __unicode__(self):
+        return str(self.id)

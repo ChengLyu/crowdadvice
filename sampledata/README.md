@@ -1,0 +1,2 @@
+- Files in this directory are repopulated sample DB file used for sqlite3.
+- To test with any a sample data file, just cp file into parent dir and rename to sqlite3.db 

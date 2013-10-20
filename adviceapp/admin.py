@@ -16,22 +16,27 @@ class UserAdmin(UserAdmin):
 
 class EducationInline(admin.StackedInline):
     model = Education
+    extra = 1
 
 
 class WorkExperienceInline(admin.StackedInline):
     model = WorkExperience
+    extra = 1
 
 
 class SkillInline(admin.StackedInline):
     model = Skill
+    extra = 1
 
 
 class CareerGoalInline(admin.StackedInline):
     model = CareerGoal
+    extra = 1
 
 
 class AdviceStatsInline(admin.StackedInline):
     model = AdviceStats
+    extra = 1
 
 
 class MenteeProfileAdmin(admin.ModelAdmin):
@@ -44,6 +49,9 @@ class MentorProfileAdmin(admin.ModelAdmin):
                AdviceStatsInline]
     
     
+class MentoringLinkAdmin(admin.ModelAdmin):
+    list_display = ('id', 'mentee', 'mentor', 'status', 'matching_score')
+    
 # Re-register UserAdmin
 admin.site.unregister(User)
 admin.site.register(User, UserAdmin)
@@ -55,4 +63,4 @@ admin.site.register(AdviceType)
 admin.site.register(MenteeProfile, MenteeProfileAdmin)
 admin.site.register(MentorProfile, MentorProfileAdmin)
 
-admin.site.register(MentoringLink)
+admin.site.register(MentoringLink, MentoringLinkAdmin)
