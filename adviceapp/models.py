@@ -75,8 +75,6 @@ class BaseProfile(models.Model):
     """Common information for both mentee and mentor
     """
     
-    user = models.OneToOneField(User, unique=True)
-    
     def __unicode__(self):
         return str(self.user.id)
 
@@ -84,13 +82,21 @@ class BaseProfile(models.Model):
 class MenteeProfile(BaseProfile):
     """Information for a mentee
     """
-    pass
+    
+    user = models.OneToOneField(User, unique=True)
+    
+    def __unicode__(self):
+        return str(self.user.id)
 
 
 class MentorProfile(BaseProfile):
     """Information for a mentee
     """
-    pass
+    
+    user = models.OneToOneField(User, unique=True)
+    
+    def __unicode__(self):
+        return str(self.user.id)
 
 
 def _class_year(num_of_years):
