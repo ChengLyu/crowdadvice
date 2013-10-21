@@ -21,17 +21,27 @@ def plan(request):
         
     context['user'] = user
     context['profile'] = request.user.userprofile
-    context['advice_types'] = AdviceType.objects.all()
+    
+    advice_types = AdviceType.objects.all()
     
     # Get associated mentor links sorted by matching score, highest first
-    mentorLinks = sorted(user.mentoringlinkmentee_set.all(),
+    mentor_links = sorted(user.mentoringlinkmentee_set.all(),
                          key=attrgetter('matching_score'),
                          reverse=True)
     
-    mentors = [ml.getMentorInfo() for ml in mentorLinks]
+    mentors = [{'user': ml.mentor, 'status': ml.status} for ml in mentor_links]
+    context['mentors'] = mentors
     
-    for m in mentors:
-        logger.debug(m['user'].username)
+    advice_type_to_mentor = []
+    
+    for a in advice_types:
+        filtered_links = filter(lambda item: a in set(item.advice_types.all()),
+                                mentor_links)
+        advice_type_to_mentor.append({
+            'advice_type': a,
+            'mentors': [ml.mentor for ml in filtered_links]})
+        
+    context['advice_types'] = advice_type_to_mentor
 
     return render(request, 'adviceapp/mentee_plan.html', context)
 

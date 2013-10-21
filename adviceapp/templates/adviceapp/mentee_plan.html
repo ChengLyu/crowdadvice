@@ -4,6 +4,23 @@
 
 <h1>Hello {{ user.first_name }}</h1>
 
-<p>Your birthday is {{ profile.birthday|date:"SHORT_DATE_FORMAT" }}</p>
+<h2>Mentor List</h2>
+<ul>
+{% for mentor in mentors %}
+    <li>{{ mentor.user.username }} is currently {{ mentor.status }}</li>
+{% endfor %}
+</ul>
+
+<h2>Advice Types</h2>
+<ul>
+{% for advice_and_mentor in advice_types %}
+    <li>
+      {{ advice_and_mentor.advice_type.name }} is being mentored by
+      {% for m in advice_and_mentor.mentors %}
+         {{ m.username }}
+      {% endfor %}
+    </li>
+{% endfor %}
+</ul>
 
 {% endblock %}
