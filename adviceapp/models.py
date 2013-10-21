@@ -90,7 +90,7 @@ class MenteeProfile(BaseProfile):
 
 
 class MentorProfile(BaseProfile):
-    """Information for a mentee
+    """Information for a mentor
     """
     
     user = models.OneToOneField(User, unique=True)

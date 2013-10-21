@@ -4,6 +4,8 @@ from django.http import HttpResponse
 
 from adviceapp.models import MenteeProfile
 
+from adviceapp.recommendation.generate_rankings import generate_ranking
+
 import logging
 
 logger = logging.getLogger(__name__)
@@ -17,8 +19,9 @@ def update_all(request):
     for user in User.objects.all():
         try:
             if user.menteeprofile:
-                logger.debug(user.username)
+                #logger.debug(user.username)
                 # Update score
+                generate_ranking(user.id)
         except (MenteeProfile.DoesNotExist):
             logger.debug('User ' + str(user.id) + ' don\'t have menteeprofile')
     

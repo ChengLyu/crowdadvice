@@ -37,3 +37,6 @@ nosetests.xml
 
 # sqlite3 file
 sqlite3.db
+
+# .idea/
+.idea
