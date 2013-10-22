@@ -156,7 +156,7 @@ h1.page-title {
 .card-poster {
   padding: 10px 35px 10px;
   background: #FFF url(../images/groovepaper.png);
-  margin: 40px 0 1px;
+  margin: 20px 0 1px;
   
 }
 
@@ -765,5 +765,14 @@ top: 10px;
 
 .mentee-summary p {
 	font-size: 14px;
+}
+
+ul.feed-list {
+	list-style: none;
+	padding: 0;
+}
+
+ul.feed-list li {
+	margin-bottom: 10px;
 }
 

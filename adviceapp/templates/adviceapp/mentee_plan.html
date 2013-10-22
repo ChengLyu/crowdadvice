@@ -1,26 +1,35 @@
 {% extends "adviceapp/base.html" %}
 
 {% block content %}
+<div class="container">
+<h1 class="mtl">Hello {{ user.first_name }}</h1>
 
-<h1>Hello {{ user.first_name }}</h1>
-
-<h2>Mentor List</h2>
-<ul>
+<div class="card-poster">
+	<h2>Mentor List</h2>
+</div>
+<div class="card">
+<ul class="feed-list">
 {% for mentor in mentors %}
-    <li>{{ mentor.user.username }} is currently {{ mentor.status }}</li>
+    <li><strong>{{ mentor.user.username }}</strong> is currently {{ mentor.status }}</li>
 {% endfor %}
 </ul>
+</div><!--card-->
 
-<h2>Advice Types</h2>
-<ul>
+<div class="card-poster">
+	<h2>Advice Types</h2>
+</div>
+<div class="card">
+<ul class="feed-list">
 {% for advice_and_mentor in advice_types %}
     <li>
-      {{ advice_and_mentor.advice_type.name }} is being mentored by
+      <strong>{{ advice_and_mentor.advice_type.name }}</strong> is being mentored by
       {% for m in advice_and_mentor.mentors %}
          {{ m.username }}
       {% endfor %}
     </li>
 {% endfor %}
 </ul>
+</div><!--card-->
 
+</div><!--container-->
 {% endblock %}

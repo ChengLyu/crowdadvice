@@ -1,6 +1,65 @@
 <!DOCTYPE html>
 <html>
+<head>
+    <!-- Loading Bootstrap -->
+    <link href="/static/adviceapp/bootstrap/css/bootstrap.css" rel="stylesheet">
+
+    <!-- Loading Flat UI -->
+    <link href="/static/adviceapp/css/flat-ui.css" rel="stylesheet">
+    <link href="/static/adviceapp/css/style.css" rel="stylesheet">
+    <link href="/static/adviceapp/fonts/ss-junior.css" rel="stylesheet">
+    <link rel="shortcut icon" href="/static/adviceapp/images/favicon.ico">
+
+    <!-- HTML5 shim, for IE6-8 support of HTML5 elements. All other JS at the end of file. -->
+    <!--[if lt IE 9]>
+      <script src="js/html5shiv.js"></script>
+    <![endif]-->
+
+    <script type="text/javascript" src="//use.typekit.net/wvg6knc.js"></script>
+    <script type="text/javascript">try{Typekit.load();}catch(e){}</script>
+</head>
 <body>
+
+<div class="navbar">
+	<div class="navbar-inner">
+		<div>
+			<a href="#fakelink" class="navbar-brand ns-brand mll mrl">NoahScope</a>
+      <ul class="nav">
+      	<li class="active"><a href="#fakelink">Home</a></li>
+      	<li><a href="#fakelink">Mentors</a></li>
+				<li><a href="#fakelink">Mentees</a></li>
+				<li class="new-card">
+					<button data-toggle="modal" href="#create-modal" class="btn btn-embossed btn-inverse">Request Solutions</button>
+     		</li>
+      </ul> <!-- /nav -->
+                  
+	<div class="pull-right">
+		<ul class="nav">
+    	<li class="nav-notifications">
+    		<a href="#"><span class="ss-activity"></span> <span class="navbar-new">1</span></a>
+				<ul>
+					<li><h3>Notifications</h3></li>
+          <li><a href="#">Simon is following you</a></li>
+          <li><a href="#">Berk Liked your card How to be an entrepreneur</a></li>
+        </ul>
+      </li>
+      <li class="mrl">
+				<a class="nav-user-link" href="#"><span class="thumbnail thumbnail-medium"><img src="/static/adviceapp/images/user.jpg"></span> Ghislaine Guerin</a>
+			<ul>
+      	<li><a href="profile.html">Profile</a></li>
+      	<li><a href="#">Settings</a></li>
+      	<li><a href="#">Logout</a></li>
+      </ul>
+		</li>
+	</ul>
+</div><!--/.pull-right -->
+                  
+</div>
+<div class="cut"></div>
+</div>
+</div>
+
+
   {% block content %}{% endblock %}
 </body>
 </html>
