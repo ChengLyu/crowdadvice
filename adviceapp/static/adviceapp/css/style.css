@@ -26,7 +26,8 @@
   color: #FFF !important;
 }
 
-.nav-notifications {
+.nav-notifications .navbar-new {
+	margin: -9px -8px;
 }
 
 .nav-notifications a {
