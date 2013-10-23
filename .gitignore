@@ -40,3 +40,9 @@ sqlite3.db
 
 # .idea/
 .idea
+
+# condensed static file dir
+/static/
+
+# virtual env dir used in deployment
+/django/
