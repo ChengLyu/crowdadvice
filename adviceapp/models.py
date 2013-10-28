@@ -75,6 +75,8 @@ class BaseProfile(models.Model):
     """Common information for both mentee and mentor
     """
     
+    category = models.ForeignKey(Category)
+    
     def __unicode__(self):
         return str(self.user.id)
 
@@ -122,7 +124,11 @@ class Education(models.Model):
     
     major = models.CharField(max_length=100)
     
+    degree = models.CharField(max_length=100)
+    
     year = models.IntegerField(choices=_class_year(50))
+    
+    description = models.CharField(max_length=1000, blank=True)
     
     def __unicode__(self):
         return str(self.id)
@@ -146,7 +152,7 @@ class WorkExperience(models.Model):
     
     end = models.DateField()
     
-    category = models.ForeignKey(Category)
+    category = models.ForeignKey(Category, blank=True)
     
     tags = models.ManyToManyField(Tag, blank=True)
     
@@ -162,7 +168,7 @@ class Skill(models.Model):
     
     name = models.CharField(max_length=100)
     
-    category = models.ForeignKey(Category)
+    category = models.ForeignKey(Category, blank=True)
     
     tags = models.ManyToManyField(Tag, blank=True)
     
@@ -173,8 +179,6 @@ class Skill(models.Model):
 class CareerGoal(models.Model):
     """Career goal
     """
-    
-    profile = models.ForeignKey(MenteeProfile)
     
     company = models.CharField(max_length=100, blank=True)
     

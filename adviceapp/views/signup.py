@@ -1,18 +1,21 @@
 from django import forms
-from django.contrib.auth import authenticate, login
 from django.contrib.auth.models import User
-from django.core.urlresolvers import reverse
 from django.db import IntegrityError
-from django.http import HttpResponseRedirect
-from django.shortcuts import render
+
 from django.utils.translation import ugettext as _
 
 import logging
+
+from adviceapp.manager.category import get_industry_choices, get_field_choices
 
 logger = logging.getLogger(__name__)
 
 class SignupForm(forms.Form):
     email = forms.EmailField()
+    first_name = forms.CharField(max_length=30)
+    last_name = forms.CharField(max_length=30)
+    industry = forms.ChoiceField(choices=get_industry_choices())
+    field = forms.ChoiceField(choices=get_field_choices())
     password = forms.CharField(max_length=20, widget=forms.PasswordInput())
     confirm_password = forms.CharField(max_length=20,
                                        widget=forms.PasswordInput(),
@@ -37,26 +40,10 @@ class SignupForm(forms.Form):
             try:
                 User.objects.create_user(email,
                                          email=email,
-                                         password=password)
+                                         password=password,
+                                         first_name=cleaned_data.get('first_name'),
+                                         last_name=cleaned_data.get('last_name'))
             except(IntegrityError):
                 raise forms.ValidationError(_('User already exists'))
 
         return cleaned_data
-
-
-def signup(request):
-    if request.method == 'POST':
-        form = SignupForm(request.POST)
-
-        if form.is_valid():
-            user = authenticate(username=form.cleaned_data['email'],
-                                password=form.cleaned_data['password'])
-            login(request, user)
-
-            return HttpResponseRedirect(reverse('adviceapp:menteeplan'))
-    else:
-        form = SignupForm()
-
-    return render(request, 'adviceapp/signup.html', {
-        'form': form,
-    })

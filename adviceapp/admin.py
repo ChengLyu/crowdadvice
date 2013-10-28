@@ -1,7 +1,7 @@
 from django.contrib import admin
 from django.contrib.auth.models import User
 from django.contrib.auth.admin import UserAdmin
-from adviceapp.models import UserProfile, Education, MenteeProfile, Category,\
+from adviceapp.models import UserProfile, Education, Category,\
                              MenteeProfile, MentorProfile, WorkExperience,\
                              Skill, CareerGoal, AdviceType, AdviceStats,\
                              MentoringLink, Tag, CategoryCorrelation
@@ -40,8 +40,7 @@ class AdviceStatsInline(admin.StackedInline):
 
 
 class MenteeProfileAdmin(admin.ModelAdmin):
-    inlines = [EducationInline, WorkExperienceInline, SkillInline,
-               CareerGoalInline]
+    inlines = [EducationInline, WorkExperienceInline, SkillInline]
 
 
 class MentorProfileAdmin(admin.ModelAdmin):
