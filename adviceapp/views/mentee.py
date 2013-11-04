@@ -9,6 +9,13 @@ from adviceapp.models import AdviceType
 logger = logging.getLogger(__name__)
 
 @login_required
+def create_profile(request):
+    """Create mentee profile
+    """
+    
+    return render(request, 'adviceapp/mentee_create_profile.html')
+
+@login_required
 def plan(request):
     """Render mentee plan page
     """
