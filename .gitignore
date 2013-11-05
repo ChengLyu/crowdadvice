@@ -44,5 +44,8 @@ sqlite3.db
 # condensed static file dir
 /static/
 
+# static media file dir
+/media/
+
 # virtual env dir used in deployment
 /django/

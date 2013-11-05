@@ -3,8 +3,11 @@ from django.contrib.auth.models import User
 from django.contrib.auth.admin import UserAdmin
 from adviceapp.models import UserProfile, Education, Category,\
                              MenteeProfile, MentorProfile, WorkExperience,\
-                             Skill, CareerGoal, AdviceType, AdviceStats,\
-                             MentoringLink, Tag, CategoryCorrelation
+                             Skill, CareerGoal, AdviceType, Link,\
+                             MentoringLink, Tag, CategoryCorrelation,\
+                             Strength, Weakness, Honor, CaseRequest,\
+                             Advice, Comment
+
 
 class UserProfileInline(admin.StackedInline):
     model = UserProfile
@@ -29,33 +32,60 @@ class SkillInline(admin.StackedInline):
     extra = 1
 
 
+class LinkInline(admin.StackedInline):
+    model = Link
+    extra = 1
+
+
 class CareerGoalInline(admin.StackedInline):
     model = CareerGoal
     extra = 1
 
 
-class AdviceStatsInline(admin.StackedInline):
-    model = AdviceStats
+class StrengthInline(admin.StackedInline):
+    model = Strength
+    extra = 1
+
+
+class WeaknessInline(admin.StackedInline):
+    model = Weakness
+    extra = 1
+
+
+class HonorInline(admin.StackedInline):
+    model = Honor
     extra = 1
 
 
 class MenteeProfileAdmin(admin.ModelAdmin):
-    inlines = [EducationInline, WorkExperienceInline, SkillInline]
+    inlines = [EducationInline, WorkExperienceInline, SkillInline,
+               LinkInline, StrengthInline, WeaknessInline]
 
 
 class MentorProfileAdmin(admin.ModelAdmin):
-    inlines = [EducationInline, WorkExperienceInline, SkillInline,
-               AdviceStatsInline]
-    
-    
+    inlines = [EducationInline, WorkExperienceInline, SkillInline]
+
+
 class MentoringLinkAdmin(admin.ModelAdmin):
-    list_display = ('id', 'mentee', 'mentor', 'status', 'matching_score')
-    
-    
+    list_display = ('id', 'case', 'mentee', 'mentor', 'status', 'matching_score')
+
+
+class CaseRequestAdmin(admin.ModelAdmin):
+    list_display = ('id', 'mentee', 'date_created', 'title')
+
+
 class CategoryCorrelationAdmin(admin.ModelAdmin):
     list_display = ('id', 'category1', 'category2', 'score')
-    
-    
+
+
+class AdviceAdmin(admin.ModelAdmin):
+    list_display = ('id', 'author', 'type', 'date_created')
+
+
+class CommentAdmin(admin.ModelAdmin):
+    list_display = ('id', 'author', 'advice', 'comment', 'date_created')
+
+
 # Re-register UserAdmin
 admin.site.unregister(User)
 admin.site.register(User, UserAdmin)
@@ -68,4 +98,9 @@ admin.site.register(AdviceType)
 admin.site.register(MenteeProfile, MenteeProfileAdmin)
 admin.site.register(MentorProfile, MentorProfileAdmin)
 
+admin.site.register(CaseRequest, CaseRequestAdmin)
+
 admin.site.register(MentoringLink, MentoringLinkAdmin)
+
+admin.site.register(Advice, AdviceAdmin)
+admin.site.register(Comment, CommentAdmin)
