@@ -41,18 +41,18 @@ def build_category_scores():
                      'Project/Product management', 'Software engineering', 'Design', 'Research/Scientist',
                      'Others']
 
-    categories = [Category(main=industry_categories[0], sub=career_fields[6]),
-                  Category(main=industry_categories[1], sub=career_fields[2]),
-                  Category(main=industry_categories[2], sub=career_fields[3]),
-                  Category(main=industry_categories[3], sub=career_fields[1]),
-                  Category(main=industry_categories[4], sub=career_fields[11]),
-                  Category(main=industry_categories[5], sub=career_fields[1]),
-                  Category(main=industry_categories[6], sub=career_fields[8]),
-                  Category(main=industry_categories[7], sub=career_fields[11]),
-                  Category(main=industry_categories[8], sub=career_fields[7]),
-                  Category(main=industry_categories[9], sub=career_fields[9]),
-                  Category(main=industry_categories[10], sub=career_fields[4]),
-                  Category(main=industry_categories[11], sub=career_fields[12])]
+    categories = [Category(industry=industry_categories[0], career_field=career_fields[6]),
+                  Category(industry=industry_categories[1], career_field=career_fields[2]),
+                  Category(industry=industry_categories[2], career_field=career_fields[3]),
+                  Category(industry=industry_categories[3], career_field=career_fields[1]),
+                  Category(industry=industry_categories[4], career_field=career_fields[11]),
+                  Category(industry=industry_categories[5], career_field=career_fields[1]),
+                  Category(industry=industry_categories[6], career_field=career_fields[8]),
+                  Category(industry=industry_categories[7], career_field=career_fields[11]),
+                  Category(industry=industry_categories[8], career_field=career_fields[7]),
+                  Category(industry=industry_categories[9], career_field=career_fields[9]),
+                  Category(industry=industry_categories[10], career_field=career_fields[4]),
+                  Category(industry=industry_categories[11], career_field=career_fields[12])]
 
     # Clear the Category database
     Category.objects.all().delete()

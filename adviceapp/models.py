@@ -2,18 +2,20 @@ from django.db import models
 from django.contrib.auth.models import User
 from django.db.models.signals import post_save
 from django.utils import timezone
+import pytz
+from timezone_field import TimeZoneField
 
 
 class Category(models.Model):
     """Career fields
     """
 
-    main = models.CharField(max_length=50)
+    industry = models.CharField(max_length=50, blank=True)
 
-    sub = models.CharField(max_length=50)
+    career_field = models.CharField(max_length=50)
 
     def __unicode__(self):
-        return self.main + '->' + self.sub
+        return self.industry + '->' + self.career_field
 
 
 class CategoryCorrelation(models.Model):
@@ -24,7 +26,7 @@ class CategoryCorrelation(models.Model):
 
     category2 = models.ForeignKey(Category, related_name='+')
 
-    score = models.PositiveIntegerField(default = 0)
+    score = models.PositiveIntegerField(default=0)
 
     def __unicode__(self):
         return self.id
@@ -57,6 +59,8 @@ class UserProfile(models.Model):
     birthday = models.DateField(blank=True, null=True)
 
     picture = models.ImageField(upload_to='profilephoto', blank=True)
+
+    #time_zone = TimeZoneField(default='America/Los Angeles')
 
     def __unicode__(self):
         return str(self.user.id)
@@ -99,6 +103,8 @@ class MentorProfile(BaseProfile):
 
     user = models.OneToOneField(User, unique=True)
 
+    career_summary = models.CharField(max_length=500)
+
     def __unicode__(self):
         return str(self.user.id)
 
@@ -128,9 +134,9 @@ class Education(models.Model):
 
     degree = models.CharField(max_length=100)
 
-    year = models.IntegerField(choices=_class_year(50))
+#    year = models.IntegerField(choices=_class_year(50))
 
-    description = models.CharField(max_length=1000, blank=True)
+#    description = models.CharField(max_length=1000, blank=True)
 
     def __unicode__(self):
         return str(self.id)
@@ -142,11 +148,13 @@ class WorkExperience(models.Model):
 
     profile = models.ForeignKey(BaseProfile)
 
+    year_of_relevant_experience = models.PositiveIntegerField()
+
     company = models.CharField(max_length=100)
 
     position = models.CharField(max_length=100)
 
-    location = models.CharField(max_length=100, blank=True)
+    #location = models.CharField(max_length=100, blank=True)
 
     description = models.CharField(max_length=1000, blank=True)
 

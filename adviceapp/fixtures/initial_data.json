@@ -3,112 +3,112 @@
    "pk": 1, 
    "model": "adviceapp.category", 
    "fields": {
-      "main": "Accounting", 
-      "sub": "Accounting & Auditing"
+      "industry": "Accounting",
+      "career_field": "Accounting & Auditing"
    }
 },
 {
    "pk": 2, 
    "model": "adviceapp.category", 
    "fields": {
-      "main": "Broadcast & Media", 
-      "sub": "Marketing"
+      "industry": "Broadcast & Media",
+      "career_field": "Marketing"
    }
 },
 {
    "pk": 3, 
    "model": "adviceapp.category", 
    "fields": {
-      "main": "Consulting", 
-      "sub": "Consulting"
+      "industry": "Consulting",
+      "career_field": "Consulting"
    }
 },
 {
    "pk": 4, 
    "model": "adviceapp.category", 
    "fields": {
-      "main": "Energy", 
-      "sub": "Analyst"
+      "industry": "Energy",
+      "career_field": "Analyst"
    }
 },
 {
    "pk": 5, 
    "model": "adviceapp.category", 
    "fields": {
-      "main": "Education", 
-      "sub": "Consulting"
+      "industry": "Education",
+      "career_field": "Consulting"
    }
 },
 {
    "pk": 6, 
    "model": "adviceapp.category", 
    "fields": {
-      "main": "Entertainment", 
-      "sub": "Public Relations"
+      "industry": "Entertainment",
+      "career_field": "Public Relations"
    }
 },
 {
    "pk": 7, 
    "model": "adviceapp.category", 
    "fields": {
-      "main": "Financial", 
-      "sub": "Analyst"
+      "industry": "Financial",
+      "career_field": "Analyst"
    }
 },
 {
    "pk": 8, 
    "model": "adviceapp.category", 
    "fields": {
-      "main": "Health Care", 
-      "sub": "Customer Service"
+      "industry": "Health Care",
+      "career_field": "Customer Service"
    }
 },
 {
    "pk": 9, 
    "model": "adviceapp.category", 
    "fields": {
-      "main": "Internet & Software", 
-      "sub": "Computer Software"
+      "industry": "Internet & Software",
+      "career_field": "Computer Software"
    }
 },
 {
    "pk": 10, 
    "model": "adviceapp.category", 
    "fields": {
-      "main": "Law & Legal", 
-      "sub": "Customer Service"
+      "industry": "Law & Legal",
+      "career_field": "Customer Service"
    }
 },
 {
    "pk": 11, 
    "model": "adviceapp.category", 
    "fields": {
-      "main": "Manufacturing", 
-      "sub": "Business Development"
+      "industry": "Manufacturing",
+      "career_field": "Business Development"
    }
 },
 {
    "pk": 12, 
    "model": "adviceapp.category", 
    "fields": {
-      "main": "Retail & Consumer", 
-      "sub": "Sales"
+      "industry": "Retail & Consumer",
+      "career_field": "Sales"
    }
 },
 {
    "pk": 13, 
    "model": "adviceapp.category", 
    "fields": {
-      "main": "Social Enterprise", 
-      "sub": "Entrepreneur"
+      "industry": "Social Enterprise",
+      "career_field": "Entrepreneur"
    }
 },
 {
    "pk": 14, 
    "model": "adviceapp.category", 
    "fields": {
-      "main": "Other", 
-      "sub": "Other"
+      "industry": "Other",
+      "career_field": "Other"
    }
 },
 {
@@ -1135,7 +1135,8 @@
       "gender": "", 
       "birthday": null, 
       "user": 1, 
-      "current_location": ""
+      "current_location": "",
+      "picture": ""
    }
 },
 {
@@ -1145,7 +1146,8 @@
       "gender": "", 
       "birthday": null, 
       "user": 2, 
-      "current_location": ""
+      "current_location": "",
+      "picture": ""
    }
 },
 {
@@ -1155,7 +1157,8 @@
       "gender": "", 
       "birthday": null, 
       "user": 3, 
-      "current_location": ""
+      "current_location": "",
+      "picture": ""
    }
 }
 ]
