@@ -1132,8 +1132,7 @@
    "pk": 1, 
    "model": "adviceapp.userprofile", 
    "fields": {
-      "gender": "", 
-      "birthday": null, 
+      "gender": "",
       "user": 1, 
       "current_location": "",
       "picture": ""
@@ -1143,8 +1142,7 @@
    "pk": 2, 
    "model": "adviceapp.userprofile", 
    "fields": {
-      "gender": "", 
-      "birthday": null, 
+      "gender": "",
       "user": 2, 
       "current_location": "",
       "picture": ""
@@ -1154,8 +1152,7 @@
    "pk": 3, 
    "model": "adviceapp.userprofile", 
    "fields": {
-      "gender": "", 
-      "birthday": null, 
+      "gender": "",
       "user": 3, 
       "current_location": "",
       "picture": ""

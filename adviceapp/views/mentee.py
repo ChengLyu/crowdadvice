@@ -4,7 +4,7 @@ from django.contrib.auth.decorators import login_required
 import logging
 from operator import attrgetter
 
-from adviceapp.models import AdviceType
+#from adviceapp.models import AdviceType
 
 logger = logging.getLogger(__name__)
 

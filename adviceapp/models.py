@@ -32,14 +32,14 @@ class CategoryCorrelation(models.Model):
         return self.id
 
 
-class Tag(models.Model):
-    """Customizable tags for searching
-    """
+#class Tag(models.Model):
+#    """Customizable tags for searching
+#    """
 
-    name = models.CharField(max_length=50)
+#    name = models.CharField(max_length=50)
 
-    def __unicode__(self):
-        return self.name
+#    def __unicode__(self):
+#        return self.name
 
 
 class UserProfile(models.Model):
@@ -56,7 +56,7 @@ class UserProfile(models.Model):
 
     current_location = models.CharField(max_length=100, blank=True)
 
-    birthday = models.DateField(blank=True, null=True)
+#    birthday = models.DateField(blank=True, null=True)
 
     picture = models.ImageField(upload_to='profilephoto', blank=True)
 
@@ -77,31 +77,31 @@ def _create_user_profile(sender, instance, created, **kwargs):
 post_save.connect(_create_user_profile, sender=User)
 
 
-class BaseProfile(models.Model):
-    """Common information for both mentee and mentor
-    """
+#class BaseProfile(models.Model):
+#    """Common information for both mentee and mentor
+#    """
 
-    category = models.ForeignKey(Category)
+    #category = models.ForeignKey(Category)
 
-    def __unicode__(self):
-        return str(self.user.id)
+#    def __unicode__(self):
+#        return str(self.user.id)
 
 
-class MenteeProfile(BaseProfile):
+class MenteeProfile(UserProfile):
     """Information for a mentee
     """
 
-    user = models.OneToOneField(User, unique=True)
+    #user = models.OneToOneField(User, unique=True)
 
     def __unicode__(self):
         return str(self.user.id)
 
 
-class MentorProfile(BaseProfile):
+class MentorProfile(UserProfile):
     """Information for a mentor
     """
 
-    user = models.OneToOneField(User, unique=True)
+    #user = models.OneToOneField(User, unique=True)
 
     career_summary = models.CharField(max_length=500)
 
@@ -126,7 +126,7 @@ class Education(models.Model):
     """Education information
     """
 
-    profile = models.ForeignKey(BaseProfile)
+    profile = models.ForeignKey(UserProfile)
 
     school = models.CharField(max_length=100)
 
@@ -146,13 +146,15 @@ class WorkExperience(models.Model):
     """Working experience
     """
 
-    profile = models.ForeignKey(BaseProfile)
+    profile = models.ForeignKey(UserProfile)
+
+    category = models.ForeignKey(Category)
 
     year_of_relevant_experience = models.PositiveIntegerField()
 
     company = models.CharField(max_length=100)
 
-    position = models.CharField(max_length=100)
+    title = models.CharField(max_length=100)
 
     #location = models.CharField(max_length=100, blank=True)
 
@@ -166,172 +168,172 @@ class WorkExperience(models.Model):
         return str(self.id)
 
 
-class Skill(models.Model):
-    """Professional skill
-    """
-
-    profile = models.ForeignKey(BaseProfile)
-
-    name = models.CharField(max_length=100)
-
-    def __unicode__(self):
-        return str(self.id)
-
-
-class Link(models.Model):
-    """Links for related works
-    """
-
-    profile = models.ForeignKey(BaseProfile)
-
-    url = models.URLField()
-
-    def __unicode__(self):
-        return str(self.id)
+#class Skill(models.Model):
+#    """Professional skill
+#    """
+#
+#    profile = models.ForeignKey(UserProfile)
+#
+#    name = models.CharField(max_length=100)
+#
+#    def __unicode__(self):
+#        return str(self.id)
 
 
-class CareerGoal(models.Model):
-    """Career goal
-    """
+#class Link(models.Model):
+#    """Links for related works
+#    """
 
-    company = models.CharField(max_length=100, blank=True)
+#    profile = models.ForeignKey(UserProfile)
 
-    position = models.CharField(max_length=100, blank=True)
+#    url = models.URLField()
 
-    location = models.CharField(max_length=100, blank=True)
+#    def __unicode__(self):
+#        return str(self.id)
+
+
+#class CareerGoal(models.Model):
+#    """Career goal
+#    """
+
+#    company = models.CharField(max_length=100, blank=True)
+
+#    position = models.CharField(max_length=100, blank=True)
+
+#    location = models.CharField(max_length=100, blank=True)
 
     # Expected age for reaching this goal
-    age = models.PositiveIntegerField(default=0, blank=True)
+#    age = models.PositiveIntegerField(default=0, blank=True)
 
-    description = models.CharField(max_length=1000, blank=True)
+#    description = models.CharField(max_length=1000, blank=True)
 
-    category = models.ForeignKey(Category)
+#    category = models.ForeignKey(Category)
 
-    def __unicode__(self):
-        return str(self.id)
-
-
-class Strength(models.Model):
-    """Strength
-    """
-
-    profile = models.ForeignKey(MenteeProfile)
-
-    description = models.CharField(max_length=100)
-
-    def __unicode__(self):
-        return str(self.id)
+#    def __unicode__(self):
+#        return str(self.id)
 
 
-class Weakness(models.Model):
-    """Weakness
-    """
+#class Strength(models.Model):
+#    """Strength
+#    """
 
-    profile = models.ForeignKey(MenteeProfile)
+#    profile = models.ForeignKey(MenteeProfile)
 
-    description = models.CharField(max_length=100)
+#    description = models.CharField(max_length=100)
 
-    def __unicode__(self):
-        return str(self.id)
-
-
-class Honor(models.Model):
-    """Honor or awards
-    """
-
-    profile = models.ForeignKey(MentorProfile)
-
-    description = models.CharField(max_length=100)
-
-    def __unicode__(self):
-        return str(self.id)
+#    def __unicode__(self):
+#        return str(self.id)
 
 
-class CaseRequest(models.Model):
-    """Request for getting career advice
-    """
+#class Weakness(models.Model):
+#    """Weakness
+#    """
 
-    mentee = models.ForeignKey(User)
+#    profile = models.ForeignKey(MenteeProfile)
 
-    title = models.CharField(max_length=100)
+#    description = models.CharField(max_length=100)
 
-    description = models.CharField(max_length=1000)
-
-    date_created = models.DateTimeField(auto_now_add=True)
-
-    def __unicode__(self):
-        return str(self.id)
+#    def __unicode__(self):
+#        return str(self.id)
 
 
-class MentoringLink(models.Model):
-    """Tracking mentoring relationship and status of invites
-    """
+#class Honor(models.Model):
+#    """Honor or awards
+#    """
 
-    case = models.ForeignKey(CaseRequest)
+#    profile = models.ForeignKey(MentorProfile)
 
-    mentee = models.ForeignKey(User, related_name='mentoringlinkmentee_set')
+#    description = models.CharField(max_length=100)
 
-    mentor = models.ForeignKey(User, related_name='mentoringlinkmentor_set')
-
-    STATUS_CHOICES = (
-        ('R', 'Recommended'),
-        ('I', 'Invited'),
-        ('J', 'Rejected'),
-        ('A', 'Accepted')
-    )
-    status = models.CharField(max_length=1,
-                              choices=STATUS_CHOICES,
-                              default='R')
-
-    last_status_change = models.DateTimeField()
-
-    matching_score = models.FloatField(default=0)
-
-    def __unicode__(self):
-        return str(self.id)
+#    def __unicode__(self):
+#        return str(self.id)
 
 
-class AdviceType(models.Model):
-    """Type of advice
-    """
+#class CaseRequest(models.Model):
+#    """Request for getting career advice
+#    """
 
-    name = models.CharField(max_length=100)
+#    mentee = models.ForeignKey(User)
 
-    def __unicode__(self):
-        return self.name
+#    title = models.CharField(max_length=100)
 
+#    description = models.CharField(max_length=1000)
 
-class Advice(models.Model):
-    """Solution/advice for mentee's case
-    """
+#    date_created = models.DateTimeField(auto_now_add=True)
 
-    author = models.ForeignKey(User)
-
-    type = models.ForeignKey(AdviceType)
-
-    content = models.CharField(max_length=1000)
-
-    date_created = models.DateTimeField(auto_now_add=True)
-
-    def __unicode__(self):
-        return str(self.id)
+#    def __unicode__(self):
+#        return str(self.id)
 
 
-class Comment(models.Model):
-    """Comment for advice
-    """
+#class MentoringLink(models.Model):
+#    """Tracking mentoring relationship and status of invites
+#    """
 
-    author = models.ForeignKey(User)
+#    case = models.ForeignKey(CaseRequest)
 
-    advice = models.ForeignKey(Advice, blank=True)
+#    mentee = models.ForeignKey(User, related_name='mentoringlinkmentee_set')
 
-    comment = models.ForeignKey('self', related_name='+', blank=True, null=True)
+#    mentor = models.ForeignKey(User, related_name='mentoringlinkmentor_set')
 
-    content = models.CharField(max_length=1000)
+#    STATUS_CHOICES = (
+#        ('R', 'Recommended'),
+#        ('I', 'Invited'),
+#        ('J', 'Rejected'),
+#        ('A', 'Accepted')
+#    )
+#    status = models.CharField(max_length=1,
+#                              choices=STATUS_CHOICES,
+#                              default='R')
 
-    date_created = models.DateTimeField(auto_now_add=True)
+#    last_status_change = models.DateTimeField()
 
-    def __unicode__(self):
-        return str(self.id)
+#    matching_score = models.FloatField(default=0)
+
+#    def __unicode__(self):
+#        return str(self.id)
+
+
+#class AdviceType(models.Model):
+#    """Type of advice
+#    """
+
+#    name = models.CharField(max_length=100)
+
+#    def __unicode__(self):
+#        return self.name
+
+
+#class Advice(models.Model):
+#    """Solution/advice for mentee's case
+#    """
+
+#    author = models.ForeignKey(User)
+
+#    type = models.ForeignKey(AdviceType)
+
+#    content = models.CharField(max_length=1000)
+
+#    date_created = models.DateTimeField(auto_now_add=True)
+
+#    def __unicode__(self):
+#        return str(self.id)
+
+
+#class Comment(models.Model):
+#    """Comment for advice
+#    """
+
+#    author = models.ForeignKey(User)
+
+#    advice = models.ForeignKey(Advice, blank=True)
+
+#    comment = models.ForeignKey('self', related_name='+', blank=True, null=True)
+
+#    content = models.CharField(max_length=1000)
+
+#    date_created = models.DateTimeField(auto_now_add=True)
+
+ #   def __unicode__(self):
+ #       return str(self.id)
 
 

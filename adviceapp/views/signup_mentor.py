@@ -11,7 +11,7 @@ def _create_profile(user, form_data):
     """Create mentor profile
     """
 
-    cat = Category.objects.get(main=form_data['industry'], sub=form_data['field'])
+    cat = Category.objects.get(industry=form_data['industry'], career_field=form_data['field'])
     mp = MentorProfile(user=user, category=cat)
 
     mp.save()

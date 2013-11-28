@@ -14,12 +14,16 @@ class SignupForm(forms.Form):
     email = forms.EmailField()
     first_name = forms.CharField(max_length=30)
     last_name = forms.CharField(max_length=30)
-    industry = forms.ChoiceField(choices=get_industry_choices())
-    field = forms.ChoiceField(choices=get_field_choices())
+    #industry = forms.ChoiceField(choices=get_industry_choices())
     password = forms.CharField(max_length=20, widget=forms.PasswordInput())
     confirm_password = forms.CharField(max_length=20,
                                        widget=forms.PasswordInput(),
                                        required=False)
+    gender = forms.ChoiceField(choices=[(c,c) for c in ('Male', 'Female', 'N/A')])
+    current_location = forms.CharField(max_length=30)
+    birthday = forms.DateField()
+    career_field = forms.ChoiceField(choices=get_field_choices())
+
 
     def clean(self):
         """Check if passwords match
@@ -47,3 +51,6 @@ class SignupForm(forms.Form):
                 raise forms.ValidationError(_('User already exists'))
 
         return cleaned_data
+
+
+#class MentorSignupForm(SignupForm):
