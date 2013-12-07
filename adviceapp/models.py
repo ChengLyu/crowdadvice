@@ -2,29 +2,38 @@ from django.db import models
 from django.contrib.auth.models import User
 from django.db.models.signals import post_save
 from django.utils import timezone
-import pytz
 from timezone_field import TimeZoneField
 
 
-class Category(models.Model):
-    """Career fields
+class Industry(models.Model):
+    """Industry
     """
 
-    industry = models.CharField(max_length=50, blank=True)
+    industry = models.CharField(max_length=50)
+
+    def __unicode__(self):
+        return self.industry
+
+
+class CareerField(models.Model):
+    """CareerField
+    """
 
     career_field = models.CharField(max_length=50)
 
     def __unicode__(self):
-        return self.industry + '->' + self.career_field
+        return self.career_field
 
 
 class CategoryCorrelation(models.Model):
     """How close the two categories relates to each other
     """
 
-    category1 = models.ForeignKey(Category, related_name='+')
+    industry1 = models.ForeignKey(Industry, related_name='+')
+    career_field1 = models.ForeignKey(CareerField, related_name='+')
 
-    category2 = models.ForeignKey(Category, related_name='+')
+    industry2 = models.ForeignKey(Industry, related_name='+')
+    career_field2 = models.ForeignKey(CareerField, related_name='+')
 
     score = models.PositiveIntegerField(default=0)
 
@@ -62,8 +71,10 @@ class UserProfile(models.Model):
 
     #time_zone = TimeZoneField(default='America/Los Angeles')
 
+    is_mentor = models.BooleanField()
+
     def __unicode__(self):
-        return str(self.user.id)
+        return str(self.user.username)
 
 
 def _create_user_profile(sender, instance, created, **kwargs):
@@ -72,6 +83,7 @@ def _create_user_profile(sender, instance, created, **kwargs):
 
     if created:
         (profile, created) = UserProfile.objects.get_or_create(user=instance)
+
 
 # Trigger create_profile when a user is modified
 post_save.connect(_create_user_profile, sender=User)
@@ -87,26 +99,31 @@ post_save.connect(_create_user_profile, sender=User)
 #        return str(self.user.id)
 
 
-class MenteeProfile(UserProfile):
+class MenteeProfile(models.Model):
     """Information for a mentee
     """
 
+    user_profile = models.OneToOneField(UserProfile)
     #user = models.OneToOneField(User, unique=True)
 
     def __unicode__(self):
-        return str(self.user.id)
+        return str(self.user_profile.user.username)
 
 
-class MentorProfile(UserProfile):
+class MentorProfile(models.Model):
     """Information for a mentor
     """
 
     #user = models.OneToOneField(User, unique=True)
 
+    user_profile = models.OneToOneField(UserProfile)
+
+    years_of_relevant_experience = models.PositiveIntegerField()
+
     career_summary = models.CharField(max_length=500)
 
     def __unicode__(self):
-        return str(self.user.id)
+        return str(self.user_profile.user.username)
 
 
 def _class_year(num_of_years):
@@ -148,21 +165,22 @@ class WorkExperience(models.Model):
 
     profile = models.ForeignKey(UserProfile)
 
-    category = models.ForeignKey(Category)
+    career_field = models.ForeignKey(CareerField)
 
     year_of_relevant_experience = models.PositiveIntegerField()
 
-    company = models.CharField(max_length=100)
-
     title = models.CharField(max_length=100)
 
-    #location = models.CharField(max_length=100, blank=True)
+    company = models.CharField(max_length=100)
 
-    description = models.CharField(max_length=1000, blank=True)
+    industry = models.ForeignKey(Industry)
+    #location = models.CharField(max_length=100, blank=True)
 
     start = models.DateField()
 
     end = models.DateField()
+
+    description = models.CharField(max_length=1000, blank=True)
 
     def __unicode__(self):
         return str(self.id)

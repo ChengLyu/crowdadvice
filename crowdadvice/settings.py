@@ -56,7 +56,7 @@ USE_TZ = True
 # URL for login required redirect
 LOGIN_URL = 'adviceapp:login'
 # URL for default successful login redirect
-LOGIN_REDIRECT_URL = 'adviceapp:menteecreateprofile'
+LOGIN_REDIRECT_URL = 'adviceapp:mentorworksignup'
 
 # Absolute filesystem path to the directory that will hold user-uploaded files.
 # Example: "/var/www/example.com/media/"

@@ -1,3 +1,5 @@
 1. Time zone field
 2. Birthday Field to choose date number
-3. 
+3. Gender and Industry, category
+4. Change to ModelForm
+5. Upload pictures

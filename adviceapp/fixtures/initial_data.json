@@ -1,1059 +1,191 @@
 [
 {
    "pk": 1, 
-   "model": "adviceapp.category", 
+   "model": "adviceapp.industry",
    "fields": {
-      "industry": "Accounting",
-      "career_field": "Accounting & Auditing"
+      "industry": "Media/Public Relations"
    }
 },
 {
-   "pk": 2, 
-   "model": "adviceapp.category", 
+   "pk": 2,
+   "model": "adviceapp.industry",
    "fields": {
-      "industry": "Broadcast & Media",
-      "career_field": "Marketing"
+      "industry": "Entertainment"
    }
 },
 {
-   "pk": 3, 
-   "model": "adviceapp.category", 
+   "pk": 3,
+   "model": "adviceapp.industry",
    "fields": {
-      "industry": "Consulting",
-      "career_field": "Consulting"
+      "industry": "Consulting"
    }
 },
 {
-   "pk": 4, 
-   "model": "adviceapp.category", 
+   "pk": 4,
+   "model": "adviceapp.industry",
    "fields": {
-      "industry": "Energy",
-      "career_field": "Analyst"
+      "industry": "Consumer Goods/Retail"
    }
 },
 {
-   "pk": 5, 
-   "model": "adviceapp.category", 
+   "pk": 5,
+   "model": "adviceapp.industry",
    "fields": {
-      "industry": "Education",
-      "career_field": "Consulting"
+      "industry": "Energy"
    }
 },
 {
-   "pk": 6, 
-   "model": "adviceapp.category", 
+   "pk": 6,
+   "model": "adviceapp.industry",
    "fields": {
-      "industry": "Entertainment",
-      "career_field": "Public Relations"
+      "industry": "Education/Government"
    }
 },
 {
-   "pk": 7, 
-   "model": "adviceapp.category", 
+   "pk": 7,
+   "model": "adviceapp.industry",
    "fields": {
-      "industry": "Financial",
-      "career_field": "Analyst"
+      "industry": "Finance/Banking"
    }
 },
 {
-   "pk": 8, 
-   "model": "adviceapp.category", 
+   "pk": 8,
+   "model": "adviceapp.industry",
    "fields": {
-      "industry": "Health Care",
-      "career_field": "Customer Service"
+      "industry": "High Tech/Manufacturing"
    }
 },
 {
-   "pk": 9, 
-   "model": "adviceapp.category", 
+   "pk": 9,
+   "model": "adviceapp.industry",
    "fields": {
-      "industry": "Internet & Software",
-      "career_field": "Computer Software"
+      "industry": "Healthcare/Biotech"
    }
 },
 {
-   "pk": 10, 
-   "model": "adviceapp.category", 
+   "pk": 10,
+   "model": "adviceapp.industry",
    "fields": {
-      "industry": "Law & Legal",
-      "career_field": "Customer Service"
+      "industry": "Real Estate"
    }
 },
 {
-   "pk": 11, 
-   "model": "adviceapp.category", 
+   "pk": 11,
+   "model": "adviceapp.industry",
    "fields": {
-      "industry": "Manufacturing",
+      "industry": "Internet/Software"
+   }
+},
+{
+   "pk": 12,
+   "model": "adviceapp.industry",
+   "fields": {
+      "industry": "Social Enterprise/Nonprofit"
+   }
+},
+{
+   "pk": 13,
+   "model": "adviceapp.industry",
+   "fields": {
+      "industry": "Other"
+   }
+},
+{
+   "pk": 1,
+   "model": "adviceapp.careerfield",
+   "fields": {
+      "career_field": "Accounting/Auditing"
+   }
+},
+{
+   "pk": 2,
+   "model": "adviceapp.careerfield",
+   "fields": {
+      "career_field": "Business/Data Analyst"
+   }
+},
+{
+   "pk": 3,
+   "model": "adviceapp.careerfield",
+   "fields": {
       "career_field": "Business Development"
    }
 },
 {
-   "pk": 12, 
-   "model": "adviceapp.category", 
+   "pk": 4,
+   "model": "adviceapp.careerfield",
    "fields": {
-      "industry": "Retail & Consumer",
+      "career_field": "Advertising"
+   }
+},
+{
+   "pk": 5,
+   "model": "adviceapp.careerfield",
+   "fields": {
+      "career_field": "Consultant"
+   }
+},
+{
+   "pk": 6,
+   "model": "adviceapp.careerfield",
+   "fields": {
+      "career_field": "Customer Service"
+   }
+},
+{
+   "pk": 7,
+   "model": "adviceapp.careerfield",
+   "fields": {
+      "career_field": "Entrepreneurship"
+   }
+},
+{
+   "pk": 8,
+   "model": "adviceapp.careerfield",
+   "fields": {
+      "career_field": "Human Resources"
+   }
+},
+{
+   "pk": 9,
+   "model": "adviceapp.careerfield",
+   "fields": {
+      "career_field": "Marketing"
+   }
+},
+{
+   "pk": 10,
+   "model": "adviceapp.careerfield",
+   "fields": {
       "career_field": "Sales"
    }
 },
 {
-   "pk": 13, 
-   "model": "adviceapp.category", 
+   "pk": 11,
+   "model": "adviceapp.careerfield",
    "fields": {
-      "industry": "Social Enterprise",
-      "career_field": "Entrepreneur"
+      "career_field": "Product Management"
    }
 },
 {
-   "pk": 14, 
-   "model": "adviceapp.category", 
+   "pk": 12,
+   "model": "adviceapp.careerfield",
    "fields": {
-      "industry": "Other",
+      "career_field": "Software Development"
+   }
+},
+{
+   "pk": 13,
+   "model": "adviceapp.careerfield",
+   "fields": {
+      "career_field": "Design"
+   }
+},
+{
+   "pk": 14,
+   "model": "adviceapp.careerfield",
+   "fields": {
       "career_field": "Other"
-   }
-},
-{
-   "pk": 1, 
-   "model": "adviceapp.categorycorrelation", 
-   "fields": {
-      "category1": 1, 
-      "category2": 1, 
-      "score": 0
-   }
-},
-{
-   "pk": 2, 
-   "model": "adviceapp.categorycorrelation", 
-   "fields": {
-      "category1": 1, 
-      "category2": 2, 
-      "score": 10
-   }
-},
-{
-   "pk": 3, 
-   "model": "adviceapp.categorycorrelation", 
-   "fields": {
-      "category1": 1, 
-      "category2": 3, 
-      "score": 5
-   }
-},
-{
-   "pk": 4, 
-   "model": "adviceapp.categorycorrelation", 
-   "fields": {
-      "category1": 1, 
-      "category2": 4, 
-      "score": 10
-   }
-},
-{
-   "pk": 5, 
-   "model": "adviceapp.categorycorrelation", 
-   "fields": {
-      "category1": 1, 
-      "category2": 5, 
-      "score": 10
-   }
-},
-{
-   "pk": 6, 
-   "model": "adviceapp.categorycorrelation", 
-   "fields": {
-      "category1": 1, 
-      "category2": 6, 
-      "score": 10
-   }
-},
-{
-   "pk": 7, 
-   "model": "adviceapp.categorycorrelation", 
-   "fields": {
-      "category1": 1, 
-      "category2": 7, 
-      "score": 0
-   }
-},
-{
-   "pk": 8, 
-   "model": "adviceapp.categorycorrelation", 
-   "fields": {
-      "category1": 1, 
-      "category2": 8, 
-      "score": 10
-   }
-},
-{
-   "pk": 9, 
-   "model": "adviceapp.categorycorrelation", 
-   "fields": {
-      "category1": 1, 
-      "category2": 9, 
-      "score": 10
-   }
-},
-{
-   "pk": 10, 
-   "model": "adviceapp.categorycorrelation", 
-   "fields": {
-      "category1": 1, 
-      "category2": 10, 
-      "score": 10
-   }
-},
-{
-   "pk": 11, 
-   "model": "adviceapp.categorycorrelation", 
-   "fields": {
-      "category1": 1, 
-      "category2": 11, 
-      "score": 5
-   }
-},
-{
-   "pk": 12, 
-   "model": "adviceapp.categorycorrelation", 
-   "fields": {
-      "category1": 1, 
-      "category2": 12, 
-      "score": 5
-   }
-},
-{
-   "pk": 13, 
-   "model": "adviceapp.categorycorrelation", 
-   "fields": {
-      "category1": 1, 
-      "category2": 13, 
-      "score": 5
-   }
-},
-{
-   "pk": 14, 
-   "model": "adviceapp.categorycorrelation", 
-   "fields": {
-      "category1": 1, 
-      "category2": 14, 
-      "score": 15
-   }
-},
-{
-   "pk": 15, 
-   "model": "adviceapp.categorycorrelation", 
-   "fields": {
-      "category1": 2, 
-      "category2": 2, 
-      "score": 0
-   }
-},
-{
-   "pk": 16, 
-   "model": "adviceapp.categorycorrelation", 
-   "fields": {
-      "category1": 2, 
-      "category2": 3, 
-      "score": 5
-   }
-},
-{
-   "pk": 17, 
-   "model": "adviceapp.categorycorrelation", 
-   "fields": {
-      "category1": 2, 
-      "category2": 4, 
-      "score": 10
-   }
-},
-{
-   "pk": 18, 
-   "model": "adviceapp.categorycorrelation", 
-   "fields": {
-      "category1": 2, 
-      "category2": 5, 
-      "score": 5
-   }
-},
-{
-   "pk": 19, 
-   "model": "adviceapp.categorycorrelation", 
-   "fields": {
-      "category1": 2, 
-      "category2": 6, 
-      "score": 0
-   }
-},
-{
-   "pk": 20, 
-   "model": "adviceapp.categorycorrelation", 
-   "fields": {
-      "category1": 2, 
-      "category2": 7, 
-      "score": 10
-   }
-},
-{
-   "pk": 21, 
-   "model": "adviceapp.categorycorrelation", 
-   "fields": {
-      "category1": 2, 
-      "category2": 8, 
-      "score": 10
-   }
-},
-{
-   "pk": 22, 
-   "model": "adviceapp.categorycorrelation", 
-   "fields": {
-      "category1": 2, 
-      "category2": 9, 
-      "score": 5
-   }
-},
-{
-   "pk": 23, 
-   "model": "adviceapp.categorycorrelation", 
-   "fields": {
-      "category1": 2, 
-      "category2": 10, 
-      "score": 10
-   }
-},
-{
-   "pk": 24, 
-   "model": "adviceapp.categorycorrelation", 
-   "fields": {
-      "category1": 2, 
-      "category2": 11, 
-      "score": 10
-   }
-},
-{
-   "pk": 25, 
-   "model": "adviceapp.categorycorrelation", 
-   "fields": {
-      "category1": 2, 
-      "category2": 12, 
-      "score": 5
-   }
-},
-{
-   "pk": 26, 
-   "model": "adviceapp.categorycorrelation", 
-   "fields": {
-      "category1": 2, 
-      "category2": 13, 
-      "score": 5
-   }
-},
-{
-   "pk": 27, 
-   "model": "adviceapp.categorycorrelation", 
-   "fields": {
-      "category1": 2, 
-      "category2": 14, 
-      "score": 15
-   }
-},
-{
-   "pk": 28, 
-   "model": "adviceapp.categorycorrelation", 
-   "fields": {
-      "category1": 3, 
-      "category2": 3, 
-      "score": 0
-   }
-},
-{
-   "pk": 29, 
-   "model": "adviceapp.categorycorrelation", 
-   "fields": {
-      "category1": 3, 
-      "category2": 4, 
-      "score": 5
-   }
-},
-{
-   "pk": 30, 
-   "model": "adviceapp.categorycorrelation", 
-   "fields": {
-      "category1": 3, 
-      "category2": 5, 
-      "score": 5
-   }
-},
-{
-   "pk": 31, 
-   "model": "adviceapp.categorycorrelation", 
-   "fields": {
-      "category1": 3, 
-      "category2": 6, 
-      "score": 10
-   }
-},
-{
-   "pk": 32, 
-   "model": "adviceapp.categorycorrelation", 
-   "fields": {
-      "category1": 3, 
-      "category2": 7, 
-      "score": 5
-   }
-},
-{
-   "pk": 33, 
-   "model": "adviceapp.categorycorrelation", 
-   "fields": {
-      "category1": 3, 
-      "category2": 8, 
-      "score": 10
-   }
-},
-{
-   "pk": 34, 
-   "model": "adviceapp.categorycorrelation", 
-   "fields": {
-      "category1": 3, 
-      "category2": 9, 
-      "score": 5
-   }
-},
-{
-   "pk": 35, 
-   "model": "adviceapp.categorycorrelation", 
-   "fields": {
-      "category1": 3, 
-      "category2": 10, 
-      "score": 10
-   }
-},
-{
-   "pk": 36, 
-   "model": "adviceapp.categorycorrelation", 
-   "fields": {
-      "category1": 3, 
-      "category2": 11, 
-      "score": 0
-   }
-},
-{
-   "pk": 37, 
-   "model": "adviceapp.categorycorrelation", 
-   "fields": {
-      "category1": 3, 
-      "category2": 12, 
-      "score": 5
-   }
-},
-{
-   "pk": 38, 
-   "model": "adviceapp.categorycorrelation", 
-   "fields": {
-      "category1": 3, 
-      "category2": 13, 
-      "score": 5
-   }
-},
-{
-   "pk": 39, 
-   "model": "adviceapp.categorycorrelation", 
-   "fields": {
-      "category1": 3, 
-      "category2": 14, 
-      "score": 15
-   }
-},
-{
-   "pk": 40, 
-   "model": "adviceapp.categorycorrelation", 
-   "fields": {
-      "category1": 4, 
-      "category2": 4, 
-      "score": 0
-   }
-},
-{
-   "pk": 41, 
-   "model": "adviceapp.categorycorrelation", 
-   "fields": {
-      "category1": 4, 
-      "category2": 5, 
-      "score": 10
-   }
-},
-{
-   "pk": 42, 
-   "model": "adviceapp.categorycorrelation", 
-   "fields": {
-      "category1": 4, 
-      "category2": 6, 
-      "score": 10
-   }
-},
-{
-   "pk": 43, 
-   "model": "adviceapp.categorycorrelation", 
-   "fields": {
-      "category1": 4, 
-      "category2": 7, 
-      "score": 5
-   }
-},
-{
-   "pk": 44, 
-   "model": "adviceapp.categorycorrelation", 
-   "fields": {
-      "category1": 4, 
-      "category2": 8, 
-      "score": 10
-   }
-},
-{
-   "pk": 45, 
-   "model": "adviceapp.categorycorrelation", 
-   "fields": {
-      "category1": 4, 
-      "category2": 9, 
-      "score": 5
-   }
-},
-{
-   "pk": 46, 
-   "model": "adviceapp.categorycorrelation", 
-   "fields": {
-      "category1": 4, 
-      "category2": 10, 
-      "score": 5
-   }
-},
-{
-   "pk": 47, 
-   "model": "adviceapp.categorycorrelation", 
-   "fields": {
-      "category1": 4, 
-      "category2": 11, 
-      "score": 0
-   }
-},
-{
-   "pk": 48, 
-   "model": "adviceapp.categorycorrelation", 
-   "fields": {
-      "category1": 4, 
-      "category2": 12, 
-      "score": 5
-   }
-},
-{
-   "pk": 49, 
-   "model": "adviceapp.categorycorrelation", 
-   "fields": {
-      "category1": 4, 
-      "category2": 13, 
-      "score": 10
-   }
-},
-{
-   "pk": 50, 
-   "model": "adviceapp.categorycorrelation", 
-   "fields": {
-      "category1": 4, 
-      "category2": 14, 
-      "score": 15
-   }
-},
-{
-   "pk": 51, 
-   "model": "adviceapp.categorycorrelation", 
-   "fields": {
-      "category1": 5, 
-      "category2": 5, 
-      "score": 0
-   }
-},
-{
-   "pk": 52, 
-   "model": "adviceapp.categorycorrelation", 
-   "fields": {
-      "category1": 5, 
-      "category2": 6, 
-      "score": 10
-   }
-},
-{
-   "pk": 53, 
-   "model": "adviceapp.categorycorrelation", 
-   "fields": {
-      "category1": 5, 
-      "category2": 7, 
-      "score": 10
-   }
-},
-{
-   "pk": 54, 
-   "model": "adviceapp.categorycorrelation", 
-   "fields": {
-      "category1": 5, 
-      "category2": 8, 
-      "score": 10
-   }
-},
-{
-   "pk": 55, 
-   "model": "adviceapp.categorycorrelation", 
-   "fields": {
-      "category1": 5, 
-      "category2": 9, 
-      "score": 5
-   }
-},
-{
-   "pk": 56, 
-   "model": "adviceapp.categorycorrelation", 
-   "fields": {
-      "category1": 5, 
-      "category2": 10, 
-      "score": 10
-   }
-},
-{
-   "pk": 57, 
-   "model": "adviceapp.categorycorrelation", 
-   "fields": {
-      "category1": 5, 
-      "category2": 11, 
-      "score": 10
-   }
-},
-{
-   "pk": 58, 
-   "model": "adviceapp.categorycorrelation", 
-   "fields": {
-      "category1": 5, 
-      "category2": 12, 
-      "score": 10
-   }
-},
-{
-   "pk": 59, 
-   "model": "adviceapp.categorycorrelation", 
-   "fields": {
-      "category1": 5, 
-      "category2": 13, 
-      "score": 5
-   }
-},
-{
-   "pk": 60, 
-   "model": "adviceapp.categorycorrelation", 
-   "fields": {
-      "category1": 5, 
-      "category2": 14, 
-      "score": 15
-   }
-},
-{
-   "pk": 61, 
-   "model": "adviceapp.categorycorrelation", 
-   "fields": {
-      "category1": 6, 
-      "category2": 6, 
-      "score": 0
-   }
-},
-{
-   "pk": 62, 
-   "model": "adviceapp.categorycorrelation", 
-   "fields": {
-      "category1": 6, 
-      "category2": 7, 
-      "score": 5
-   }
-},
-{
-   "pk": 63, 
-   "model": "adviceapp.categorycorrelation", 
-   "fields": {
-      "category1": 6, 
-      "category2": 8, 
-      "score": 10
-   }
-},
-{
-   "pk": 64, 
-   "model": "adviceapp.categorycorrelation", 
-   "fields": {
-      "category1": 6, 
-      "category2": 9, 
-      "score": 5
-   }
-},
-{
-   "pk": 65, 
-   "model": "adviceapp.categorycorrelation", 
-   "fields": {
-      "category1": 6, 
-      "category2": 10, 
-      "score": 10
-   }
-},
-{
-   "pk": 66, 
-   "model": "adviceapp.categorycorrelation", 
-   "fields": {
-      "category1": 6, 
-      "category2": 11, 
-      "score": 10
-   }
-},
-{
-   "pk": 67, 
-   "model": "adviceapp.categorycorrelation", 
-   "fields": {
-      "category1": 6, 
-      "category2": 12, 
-      "score": 5
-   }
-},
-{
-   "pk": 68, 
-   "model": "adviceapp.categorycorrelation", 
-   "fields": {
-      "category1": 6, 
-      "category2": 13, 
-      "score": 10
-   }
-},
-{
-   "pk": 69, 
-   "model": "adviceapp.categorycorrelation", 
-   "fields": {
-      "category1": 6, 
-      "category2": 14, 
-      "score": 15
-   }
-},
-{
-   "pk": 70, 
-   "model": "adviceapp.categorycorrelation", 
-   "fields": {
-      "category1": 7, 
-      "category2": 7, 
-      "score": 0
-   }
-},
-{
-   "pk": 71, 
-   "model": "adviceapp.categorycorrelation", 
-   "fields": {
-      "category1": 7, 
-      "category2": 8, 
-      "score": 10
-   }
-},
-{
-   "pk": 72, 
-   "model": "adviceapp.categorycorrelation", 
-   "fields": {
-      "category1": 7, 
-      "category2": 9, 
-      "score": 5
-   }
-},
-{
-   "pk": 73, 
-   "model": "adviceapp.categorycorrelation", 
-   "fields": {
-      "category1": 7, 
-      "category2": 10, 
-      "score": 5
-   }
-},
-{
-   "pk": 74, 
-   "model": "adviceapp.categorycorrelation", 
-   "fields": {
-      "category1": 7, 
-      "category2": 11, 
-      "score": 5
-   }
-},
-{
-   "pk": 75, 
-   "model": "adviceapp.categorycorrelation", 
-   "fields": {
-      "category1": 7, 
-      "category2": 12, 
-      "score": 5
-   }
-},
-{
-   "pk": 76, 
-   "model": "adviceapp.categorycorrelation", 
-   "fields": {
-      "category1": 7, 
-      "category2": 13, 
-      "score": 5
-   }
-},
-{
-   "pk": 77, 
-   "model": "adviceapp.categorycorrelation", 
-   "fields": {
-      "category1": 7, 
-      "category2": 14, 
-      "score": 15
-   }
-},
-{
-   "pk": 78, 
-   "model": "adviceapp.categorycorrelation", 
-   "fields": {
-      "category1": 8, 
-      "category2": 8, 
-      "score": 0
-   }
-},
-{
-   "pk": 79, 
-   "model": "adviceapp.categorycorrelation", 
-   "fields": {
-      "category1": 8, 
-      "category2": 9, 
-      "score": 5
-   }
-},
-{
-   "pk": 80, 
-   "model": "adviceapp.categorycorrelation", 
-   "fields": {
-      "category1": 8, 
-      "category2": 10, 
-      "score": 5
-   }
-},
-{
-   "pk": 81, 
-   "model": "adviceapp.categorycorrelation", 
-   "fields": {
-      "category1": 8, 
-      "category2": 11, 
-      "score": 10
-   }
-},
-{
-   "pk": 82, 
-   "model": "adviceapp.categorycorrelation", 
-   "fields": {
-      "category1": 8, 
-      "category2": 12, 
-      "score": 10
-   }
-},
-{
-   "pk": 83, 
-   "model": "adviceapp.categorycorrelation", 
-   "fields": {
-      "category1": 8, 
-      "category2": 13, 
-      "score": 5
-   }
-},
-{
-   "pk": 84, 
-   "model": "adviceapp.categorycorrelation", 
-   "fields": {
-      "category1": 8, 
-      "category2": 14, 
-      "score": 15
-   }
-},
-{
-   "pk": 85, 
-   "model": "adviceapp.categorycorrelation", 
-   "fields": {
-      "category1": 9, 
-      "category2": 9, 
-      "score": 0
-   }
-},
-{
-   "pk": 86, 
-   "model": "adviceapp.categorycorrelation", 
-   "fields": {
-      "category1": 9, 
-      "category2": 10, 
-      "score": 10
-   }
-},
-{
-   "pk": 87, 
-   "model": "adviceapp.categorycorrelation", 
-   "fields": {
-      "category1": 9, 
-      "category2": 11, 
-      "score": 10
-   }
-},
-{
-   "pk": 88, 
-   "model": "adviceapp.categorycorrelation", 
-   "fields": {
-      "category1": 9, 
-      "category2": 12, 
-      "score": 5
-   }
-},
-{
-   "pk": 89, 
-   "model": "adviceapp.categorycorrelation", 
-   "fields": {
-      "category1": 9, 
-      "category2": 13, 
-      "score": 5
-   }
-},
-{
-   "pk": 90, 
-   "model": "adviceapp.categorycorrelation", 
-   "fields": {
-      "category1": 9, 
-      "category2": 14, 
-      "score": 15
-   }
-},
-{
-   "pk": 91, 
-   "model": "adviceapp.categorycorrelation", 
-   "fields": {
-      "category1": 10, 
-      "category2": 10, 
-      "score": 0
-   }
-},
-{
-   "pk": 92, 
-   "model": "adviceapp.categorycorrelation", 
-   "fields": {
-      "category1": 10, 
-      "category2": 11, 
-      "score": 5
-   }
-},
-{
-   "pk": 93, 
-   "model": "adviceapp.categorycorrelation", 
-   "fields": {
-      "category1": 10, 
-      "category2": 12, 
-      "score": 10
-   }
-},
-{
-   "pk": 94, 
-   "model": "adviceapp.categorycorrelation", 
-   "fields": {
-      "category1": 10, 
-      "category2": 13, 
-      "score": 5
-   }
-},
-{
-   "pk": 95, 
-   "model": "adviceapp.categorycorrelation", 
-   "fields": {
-      "category1": 10, 
-      "category2": 14, 
-      "score": 15
-   }
-},
-{
-   "pk": 96, 
-   "model": "adviceapp.categorycorrelation", 
-   "fields": {
-      "category1": 11, 
-      "category2": 11, 
-      "score": 0
-   }
-},
-{
-   "pk": 97, 
-   "model": "adviceapp.categorycorrelation", 
-   "fields": {
-      "category1": 11, 
-      "category2": 12, 
-      "score": 5
-   }
-},
-{
-   "pk": 98, 
-   "model": "adviceapp.categorycorrelation", 
-   "fields": {
-      "category1": 11, 
-      "category2": 13, 
-      "score": 5
-   }
-},
-{
-   "pk": 99, 
-   "model": "adviceapp.categorycorrelation", 
-   "fields": {
-      "category1": 11, 
-      "category2": 14, 
-      "score": 15
-   }
-},
-{
-   "pk": 100, 
-   "model": "adviceapp.categorycorrelation", 
-   "fields": {
-      "category1": 12, 
-      "category2": 12, 
-      "score": 0
-   }
-},
-{
-   "pk": 101, 
-   "model": "adviceapp.categorycorrelation", 
-   "fields": {
-      "category1": 12, 
-      "category2": 13, 
-      "score": 5
-   }
-},
-{
-   "pk": 102, 
-   "model": "adviceapp.categorycorrelation", 
-   "fields": {
-      "category1": 12, 
-      "category2": 14, 
-      "score": 15
-   }
-},
-{
-   "pk": 103, 
-   "model": "adviceapp.categorycorrelation", 
-   "fields": {
-      "category1": 13, 
-      "category2": 13, 
-      "score": 0
-   }
-},
-{
-   "pk": 104, 
-   "model": "adviceapp.categorycorrelation", 
-   "fields": {
-      "category1": 13, 
-      "category2": 14, 
-      "score": 15
-   }
-},
-{
-   "pk": 105, 
-   "model": "adviceapp.categorycorrelation", 
-   "fields": {
-      "category1": 14, 
-      "category2": 14, 
-      "score": 0
    }
 },
 {

@@ -20,6 +20,7 @@ urlpatterns = patterns('',
     url(r'^mentee/signup/$', signup_mentee.signup, name='menteesignup'),
     url(r'^mentee/plan/$', mentee.plan, name='menteeplan'),
     url(r'^mentor/signup/$', signup_mentor.signup, name='mentorsignup'),
+    url(r'^mentor/signup/work_experience', signup_mentor.signup_work, name='mentorworksignup'),
     url(r'^update/all/$', updatescore.update_all, name='updateall'),
     url(r'^mentee/$',
         RedirectView.as_view(url=reverse_lazy('adviceapp:menteeplan')),
@@ -30,4 +31,5 @@ urlpatterns = patterns('',
 
     # new
     url(r'^mentor/directory/$', mentor_directory.show_all, name='mentordirectory'),
+    #url(r'^mentor/dashboard/$', mentor_dashboard, name='mentordashboard')
 )

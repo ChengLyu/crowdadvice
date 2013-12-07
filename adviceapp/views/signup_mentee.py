@@ -4,7 +4,7 @@ from django.contrib.auth import authenticate, login
 from django.core.urlresolvers import reverse
 
 from adviceapp.views.signup import SignupForm
-from adviceapp.models import Category, MenteeProfile
+from adviceapp.models import Industry, CareerField, MenteeProfile
 
 
 def _create_profile(user, form_data):

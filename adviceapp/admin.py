@@ -1,20 +1,12 @@
 from django.contrib import admin
 from django.contrib.auth.models import User
 from django.contrib.auth.admin import UserAdmin
-from adviceapp.models import UserProfile, Education, Category, CategoryCorrelation,\
-                             MenteeProfile, MentorProfile, WorkExperience
+from adviceapp.models import UserProfile, Education, Industry, CareerField, \
+                                CategoryCorrelation,MenteeProfile, MentorProfile, WorkExperience
                              #Skill, CareerGoal, AdviceType, Link,\
                              #MentoringLink, Tag, \
                              #Strength, Weakness, Honor, CaseRequest,\
                              #Advice, Comment
-
-
-class UserProfileInline(admin.StackedInline):
-    model = UserProfile
-
-
-class UserAdmin(UserAdmin):
-    inlines = [UserProfileInline]
 
 
 class EducationInline(admin.StackedInline):
@@ -25,6 +17,22 @@ class EducationInline(admin.StackedInline):
 class WorkExperienceInline(admin.StackedInline):
     model = WorkExperience
     extra = 1
+
+
+class UserProfileInline(admin.StackedInline):
+    model = UserProfile
+
+
+#class MenteeProfileInline(admin.StackedInline):
+#    model = MenteeProfile
+
+
+#class MentorProfileInline(admin.StackedInline):
+#    model = MentorProfile
+
+
+class UserProfileAdmin(admin.ModelAdmin):
+    inlines = [EducationInline, WorkExperienceInline]
 
 
 #class SkillInline(admin.StackedInline):
@@ -57,13 +65,13 @@ class WorkExperienceInline(admin.StackedInline):
 #    extra = 1
 
 
-class MenteeProfileAdmin(admin.ModelAdmin):
-    inlines = [EducationInline, WorkExperienceInline]#, SkillInline,
+#class MenteeProfileAdmin(admin.ModelAdmin):
+#    inlines = [MenteeProfileInline]#, SkillInline,
 #               LinkInline, StrengthInline, WeaknessInline]
 
 
-class MentorProfileAdmin(admin.ModelAdmin):
-    inlines = [EducationInline, WorkExperienceInline]#, SkillInline]
+#class MentorProfileAdmin(admin.ModelAdmin):
+#    inlines = [MentorProfileInline]#, SkillInline]
 
 
 #class MentoringLinkAdmin(admin.ModelAdmin):
@@ -74,8 +82,8 @@ class MentorProfileAdmin(admin.ModelAdmin):
 #    list_display = ('id', 'mentee', 'date_created', 'title')
 
 
-class CategoryCorrelationAdmin(admin.ModelAdmin):
-    list_display = ('id', 'category1', 'category2', 'score')
+#class CategoryCorrelationAdmin(admin.ModelAdmin):
+#    list_display = ('id', 'category1', 'category2', 'score')
 
 
 #class AdviceAdmin(admin.ModelAdmin):
@@ -87,16 +95,21 @@ class CategoryCorrelationAdmin(admin.ModelAdmin):
 
 
 # Re-register UserAdmin
-admin.site.unregister(User)
-admin.site.register(User, UserAdmin)
+#admin.site.unregister(User)
+#admin.site.register(User, UserAdmin)
 
-admin.site.register(Category)
-admin.site.register(CategoryCorrelation, CategoryCorrelationAdmin)
+admin.site.register(UserProfile, UserProfileAdmin)
+
+admin.site.register(Industry)
+admin.site.register(CareerField)
+#admin.site.register(CategoryCorrelation, CategoryCorrelationAdmin)
 #admin.site.register(Tag)
 #admin.site.register(AdviceType)
 
-admin.site.register(MenteeProfile, MenteeProfileAdmin)
-admin.site.register(MentorProfile, MentorProfileAdmin)
+#admin.site.register(MenteeProfile, MenteeProfileAdmin)
+admin.site.register(MenteeProfile)
+#admin.site.register(MentorProfile, MentorProfileAdmin)
+admin.site.register(MentorProfile)
 
 #admin.site.register(CaseRequest, CaseRequestAdmin)
 

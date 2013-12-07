@@ -1,18 +1,18 @@
-from adviceapp.models import Category
+from adviceapp.models import Industry, CareerField
 from adviceapp.helper import move_to_last
 
-def get_category_mapping():
-    """Get a dict of all main(industry) category to available sub(career field) category
-    """
-    
-    cat_dict = {}
-    for cat in Category.objects.all():
-        if not cat.industry in cat_dict:
-            cat_dict[cat.industry] = []
-        
-        cat_dict[cat.industry].append(cat.career_field)
-
-    return cat_dict
+# def get_category_mapping():
+#     """Get a dict of all main(industry) category to available sub(career field) category
+#     """
+#
+#     cat_dict = {}
+#     for cat in Category.objects.all():
+#         if not cat.industry in cat_dict:
+#             cat_dict[cat.industry] = []
+#
+#         cat_dict[cat.industry].append(cat.career_field)
+#
+#     return cat_dict
 
 
 def get_industry_choices():
@@ -20,7 +20,7 @@ def get_industry_choices():
     """
     
     industries = set()
-    for cat in Category.objects.all():
+    for cat in Industry.objects.all():
         industries.add(cat.industry)
     
     industries_list = list(industries)
@@ -36,7 +36,7 @@ def get_field_choices():
     """
     
     fields = set()
-    for cat in Category.objects.all():
+    for cat in CareerField.objects.all():
         fields.add(cat.career_field)
 
     fields_list = list(fields)
