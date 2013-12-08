@@ -1,0 +1,28 @@
+<h1>Welcome {{ user.first_name }} {{ user.last_name }}</h1>
+
+Mentor Profile:
+<ul>
+    <li>Name: {{ mentor.user.first_name }} {{ mentor.user.last_name }}</li>
+    <li>Current Location: {{ mentor.current_location }}</li>
+    <li>Years of Relevant Experience: {{ mentor.mentorprofile.years_of_relevant_experience }}</li>
+    <li>Career Summary: {{ mentor.mentorprofile.career_summary }}</li>
+    <li>Work Experiences:</li>
+        <table>
+            {% for work in work_experiences %}
+                <ul>
+                    <li>Career Field: {{ work.career_field }}</li>
+                    <li>Years of Relevant Experience: {{ work.year_of_relevant_experience }} </li>
+                    <li>Title: {{ work.title }}</li>
+                    <li>Company: {{ work.company }}</li>
+                    <li>Industry: {{ work.industry }}</li>
+                    <li>Start Date: {{ work.start }}</li>
+                    <li>End Date: {{ work.end }}</li>
+                    <li>Description: {{ work.description }}</li>
+                </ul>
+            {% endfor %}
+        </table>
+</ul>
+
+<a href="{% url 'adviceapp:mentordashboard' %}">DashBoard</a><br>
+<a href="{% url 'adviceapp:mentordirectory' %}">Mentor Directory</a><br>
+<a href="{% url 'adviceapp:logout' %}">Logout</a>

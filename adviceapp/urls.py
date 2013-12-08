@@ -2,7 +2,7 @@ from django.conf.urls import patterns, url
 from django.views.generic import RedirectView
 from django.core.urlresolvers import reverse_lazy
 from adviceapp.views import (signup_mentee, signup_mentor, mentee, updatescore,
-                             landing, mentor_directory)
+                             landing, mentor)
 
 urlpatterns = patterns('',
     url(r'^landing/$', landing.landing, name='landing'),
@@ -30,6 +30,7 @@ urlpatterns = patterns('',
         name='main'),
 
     # new
-    url(r'^mentor/directory/$', mentor_directory.show_all, name='mentordirectory'),
-    #url(r'^mentor/dashboard/$', mentor_dashboard, name='mentordashboard')
+    url(r'^mentor/directory/$', mentor.directory, name='mentordirectory'),
+    url(r'^mentor/dashboard/$', mentor.dashboard, name='mentordashboard'),
+    url(r'^mentor/(?P<mentor_id>\d+)', mentor.profile, name='mentorprofile'),
 )
