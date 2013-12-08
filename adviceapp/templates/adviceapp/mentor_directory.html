@@ -6,6 +6,7 @@ Mentor Directory:
         <ul>
             <li>Name: {{ mentor.user.first_name }} {{ mentor.user.last_name }}</li>
             <li>Current Location: {{ mentor.current_location }}</li>
+            <li>Linkedin URL: {{ mentor.linkedin_url }}</li>
             <li>Years of Relevant Experience: {{ mentor.mentorprofile.years_of_relevant_experience }}</li>
             <li>Career Summary: {{ mentor.mentorprofile.career_summary }}</li>
             <li><a href="{% url 'adviceapp:mentorprofile' mentor.id %}">View Profile</a></li>

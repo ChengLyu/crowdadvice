@@ -18,6 +18,7 @@ def _create_profile(user, form):
     user_profile = UserProfile.objects.get(user=user)
     user_profile.gender = form['gender']
     user_profile.current_location = form['current_location']
+    user_profile.linkedin_url = form['linkedin_url']
     user_profile.is_mentor = True
     user_profile.save()
     mentor_profile = MentorProfile(user_profile=user_profile, years_of_relevant_experience=form['years_of_relevant_experience'], career_summary=form['career_summary'])

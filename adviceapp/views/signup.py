@@ -54,6 +54,7 @@ class SignupForm(forms.Form):
 
 
 class MentorSignupForm(SignupForm):
+    linkedin_url = forms.URLField()
     years_of_relevant_experience = forms.IntegerField()
     career_summary = forms.CharField(max_length=500)
 

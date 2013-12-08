@@ -69,6 +69,8 @@ class UserProfile(models.Model):
 
     picture = models.ImageField(upload_to='profilephoto', blank=True)
 
+    linkedin_url = models.URLField(blank=True)
+
     #time_zone = TimeZoneField(default='America/Los Angeles')
 
     is_mentor = models.BooleanField()
