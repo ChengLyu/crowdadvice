@@ -1,6 +1,6 @@
 __author__ = 'ChengLu'
 
-from django.shortcuts import render
+from django.shortcuts import render, get_object_or_404
 from adviceapp.models import UserProfile, MentorProfile, WorkExperience
 
 
@@ -25,7 +25,8 @@ def profile(request, mentor_id):
     """Mentor Profile
     """
 
-    mentor_userprofile = UserProfile.objects.get(id=mentor_id)
+    mentor_userprofile = get_object_or_404(UserProfile, id=mentor_id)
+    #mentor_userprofile = UserProfile.objects.get(id=mentor_id)
     work_experiences = WorkExperience.objects.filter(profile=mentor_userprofile)
     return render(request, 'adviceapp/mentor_profile.html', {
         'user': request.user,

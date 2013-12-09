@@ -14,5 +14,9 @@ Mentor Directory:
     {% endfor %}
 </table>
 
-<a href="{% url 'adviceapp:mentordashboard' %}">DashBoard</a><br>
-<a href="{% url 'adviceapp:logout' %}">Logout</a>
+{% if user.is_authenticated %}
+    <a href="{% url 'adviceapp:mentordashboard' %}">DashBoard</a><br>
+    <a href="{% url 'adviceapp:logout' %}">Logout</a>
+{% else %}
+    <a href="{% url 'adviceapp:landing' %}">Landing</a>
+{% endif %}
