@@ -5,6 +5,7 @@ from django.db import IntegrityError
 from django.utils.translation import ugettext as _
 
 from adviceapp.models import UserProfile, MentorProfile, MenteeProfile, Education, WorkExperience
+from adviceapp.models import MENTOR_RATE_CHOICES, YEAR_CHOICES
 
 import logging
 
@@ -21,9 +22,8 @@ class SignupForm(forms.Form):
     confirm_password = forms.CharField(max_length=20,
                                        widget=forms.PasswordInput(),
                                        required=False)
-    gender = forms.ChoiceField(choices=[c for c in (('M','Male'), ('F', 'Female'))])
-    current_location = forms.CharField(max_length=30)
-    #birthday = forms.DateField()
+    #gender = forms.ChoiceField(choices=[c for c in (('M','Male'), ('F', 'Female'))])
+    city = forms.CharField(max_length=100)
 
     def clean(self):
         """Check if passwords match
@@ -55,8 +55,9 @@ class SignupForm(forms.Form):
 
 class MentorSignupForm(SignupForm):
     linkedin_url = forms.URLField()
-    years_of_relevant_experience = forms.IntegerField()
-    career_summary = forms.CharField(max_length=500)
+    rate = forms.ChoiceField(choices=MENTOR_RATE_CHOICES)
+    years_of_relevant_experience = forms.ChoiceField(choices=YEAR_CHOICES)
+    bio = forms.CharField(max_length=500)
 
 
 class EducationSignupForm(forms.Form):

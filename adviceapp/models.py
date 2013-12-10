@@ -4,6 +4,21 @@ from django.db.models.signals import post_save
 from django.utils import timezone
 from timezone_field import TimeZoneField
 
+MENTOR_RATE_CHOICES = (
+    (1, '15-20'),
+    (2, '20-25'),
+    (3, '25-30'),
+)
+
+YEAR_CHOICES = (
+    (1, 'Less than half a year'),
+    (2, 'One year'),
+    (3, 'Two to three years'),
+    (4, 'Three to five years'),
+    (5, 'Five to ten years'),
+    (6, 'More than ')
+)
+
 
 class Industry(models.Model):
     """Industry
@@ -57,15 +72,13 @@ class UserProfile(models.Model):
 
     user = models.OneToOneField(User, unique=True)
 
-    GENDER_CHOICES = (
-        ('M', 'Male'),
-        ('F', 'Female')
-    )
-    gender = models.CharField(max_length=1, choices=GENDER_CHOICES, blank=True)
+    #GENDER_CHOICES = (
+    #    ('M', 'Male'),
+    #    ('F', 'Female')
+    #)
+    #gender = models.CharField(max_length=1, choices=GENDER_CHOICES, blank=True)
 
-    current_location = models.CharField(max_length=100, blank=True)
-
-#    birthday = models.DateField(blank=True, null=True)
+    city = models.CharField(max_length=100, blank=True)
 
     picture = models.ImageField(upload_to='profilephoto', blank=True)
 
@@ -120,9 +133,9 @@ class MentorProfile(models.Model):
 
     user_profile = models.OneToOneField(UserProfile)
 
-    years_of_relevant_experience = models.PositiveIntegerField()
+    rate = models.CharField(max_length=1, choices=MENTOR_RATE_CHOICES)
 
-    career_summary = models.CharField(max_length=500)
+    bio = models.CharField(max_length=500)
 
     def __unicode__(self):
         return str(self.user_profile.user.username)
@@ -145,13 +158,13 @@ class Education(models.Model):
     """Education information
     """
 
-    profile = models.ForeignKey(UserProfile)
+    user_profile = models.ForeignKey(UserProfile)
 
     school = models.CharField(max_length=100)
 
-    major = models.CharField(max_length=100)
+    major = models.CharField(max_length=100, blank=True)
 
-    degree = models.CharField(max_length=100)
+    degree = models.CharField(max_length=100, blank=True)
 
 #    year = models.IntegerField(choices=_class_year(50))
 
@@ -165,22 +178,17 @@ class WorkExperience(models.Model):
     """Working experience
     """
 
-    profile = models.ForeignKey(UserProfile)
-
-    career_field = models.ForeignKey(CareerField)
-
-    year_of_relevant_experience = models.PositiveIntegerField()
+    user_profile = models.ForeignKey(UserProfile)
 
     title = models.CharField(max_length=100)
+
+    career_field = models.ForeignKey(CareerField)
 
     company = models.CharField(max_length=100)
 
     industry = models.ForeignKey(Industry)
-    #location = models.CharField(max_length=100, blank=True)
 
-    start = models.DateField()
-
-    end = models.DateField()
+    years_of_relevant_experience = models.CharField(max_length=1, choices=YEAR_CHOICES)
 
     description = models.CharField(max_length=1000, blank=True)
 
